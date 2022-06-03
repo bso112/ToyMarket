@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <dimen name="head1">22dp</dimen>
+    <dimen name="head2">20dp</dimen>
+    <dimen name="head3">18dp</dimen>
+    <dimen name="body">16dp</dimen>
+    <dimen name="caption">12dp</dimen>
+    
+</resources>

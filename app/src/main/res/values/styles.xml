@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="highlight">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="h1" parent="highlight">
+        <item name="android:textSize">@dimen/head1</item>
+    </style>
+
+    <style name="h2" parent="highlight">
+        <item name="android:textSize">@dimen/head2</item>
+    </style>
+
+    <style name="h3" parent="highlight">
+        <item name="android:textSize">@dimen/head3</item>
+    </style>
+
+
+    <style name="bold" parent="highlight">
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>
