@@ -11,12 +11,10 @@
     <color name="blue">#3D79E7</color>
 
     <color name="transparent">#00000000</color>
-    <color name="gray">#F5F5F5</color>
-    <color name="gray10">#E4E4E4</color>
-    <color name="gray30">#C8C8C8</color>
-    <color name="gray50">#A2A6AF</color>
-    <color name="gray80">#787878</color>
+    <color name="gray">#808080</color>
+    <color name="gray75">#bfbfbf</color>
 
+    <color name="placeholder">@color/gray75</color>
     <color name="surface">#fcfbfc</color>
     <color name="product_background">#fbebdf</color>
     <color name="price">#ea6552</color>

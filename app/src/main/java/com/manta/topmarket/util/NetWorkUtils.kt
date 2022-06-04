@@ -46,12 +46,12 @@ fun <T> ViewModel.updateUiState(
     networkCall: suspend () -> Result<T>
 ) {
     viewModelScope.launch {
-        state.update { UiState.loading() }
+        state.value = UiState.loading()
         networkCall()
             .onSuccess { result ->
-                state.update { UiState.success(result) }
+                state.value = UiState.success(result)
             }.onFailure { t ->
-                state.update { UiState.error(t) }
+                state.value = UiState.error(t)
             }
     }
 }
