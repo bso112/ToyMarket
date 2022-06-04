@@ -1,13 +1,12 @@
 package com.manta.topmarket.ui.main
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.manta.topmarket.model.Product
 import com.manta.topmarket.repository.MainRepository
+import com.manta.topmarket.ui.UiState
+import com.manta.topmarket.util.updateUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,11 +14,15 @@ class MainViewModel @Inject constructor(
     private val mainRepository: MainRepository
 ) : ViewModel() {
 
-    private val _toastMsg = MutableSharedFlow<String>()
-    val toastMsg = _toastMsg.asSharedFlow()
+    private val _productList = MutableStateFlow<UiState<List<Product>>>(UiState())
+    val productList = _productList.asStateFlow()
 
-    val productList = mainRepository.fetchProductList {
-        _toastMsg.emit(it.message ?: "")
-    }.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+    init {
+        updateUiState(_productList) {
+            mainRepository.fetchProductList()
+        }
+    }
+
+
 
 }

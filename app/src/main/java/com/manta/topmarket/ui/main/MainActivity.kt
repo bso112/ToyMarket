@@ -6,8 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.manta.topmarket.R
 import com.manta.topmarket.databinding.ActivityMainBinding
-import com.manta.topmarket.databinding.ItemToyBoxBinding
-import com.manta.topmarket.databinding.ItemToyRowBinding
 import com.manta.topmarket.model.Product
 import com.manta.topmarket.util.AppListAdapter
 import com.manta.topmarket.util.ImageProvider

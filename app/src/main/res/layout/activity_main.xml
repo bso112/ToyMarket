@@ -120,7 +120,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
-            app:submitList="@{vm.productList}"
+            app:submitList="@{vm.productList.value}"
             tools:listitem="@layout/item_toy_box"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/trendingToysTitle" />
@@ -149,7 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/item_toy_row"
-            submitList="@{vm.productList}"
+            submitList="@{vm.productList.value}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
             android:layout_marginHorizontal="20dp"

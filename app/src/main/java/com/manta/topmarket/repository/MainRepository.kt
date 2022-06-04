@@ -1,19 +1,17 @@
 package com.manta.topmarket.repository
 
 import com.manta.topmarket.network.MarketService
-import com.manta.topmarket.network.NetworkProcessor
+import com.manta.topmarket.util.processNetwork
+import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
 
 
 class MainRepository @Inject constructor(
     private val marketService: MarketService,
-    private val networkProcessor: NetworkProcessor
+    private val ioDispatcher: CoroutineDispatcher
 ) {
-
-    fun fetchProductList(
-        onError: suspend (Throwable) -> Unit = {}
-    ) = networkProcessor.processNetwork(
-        netWorkCall = { marketService.getAllProduct() },
-        onError = onError
+    suspend fun fetchProductList() = processNetwork(
+        ioDispatcher = ioDispatcher,
+        netWorkCall = { marketService.getAllProduct() }
     )
 }
