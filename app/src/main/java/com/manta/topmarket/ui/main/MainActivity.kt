@@ -32,5 +32,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.trendingToys.adapter = AppListAdapter<Product>(R.layout.item_toy_box)
         binding.recommendToys.adapter = AppListAdapter<Product>(R.layout.item_toy_row)
+
+
+
     }
 }

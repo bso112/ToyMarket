@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="head1">22dp</dimen>
-    <dimen name="head2">20dp</dimen>
-    <dimen name="head3">18dp</dimen>
-    <dimen name="body">16dp</dimen>
-    <dimen name="caption">12dp</dimen>
+    <dimen name="head1">22sp</dimen>
+    <dimen name="head2">20sp</dimen>
+    <dimen name="head3">18sp</dimen>
+    <dimen name="body">16sp</dimen>
+    <dimen name="caption">12sp</dimen>
     
 </resources>

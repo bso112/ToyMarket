@@ -10,3 +10,4 @@ import androidx.recyclerview.widget.RecyclerView
 fun RecyclerView.bindSubmitList(itemList: List<Any>?) {
     (adapter as? ListAdapter<Any, *>)?.submitList(itemList)
 }
+
