@@ -6,12 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-    <data>
-        <variable
-            name="product"
-            type="com.manta.topmarket.model.Product" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,9 +22,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/circle"
-                app:networkImage="@{product.image}"
                 android:padding="15dp"
-                android:backgroundTint="@color/product_background"
+                android:backgroundTint="@color/gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -43,8 +36,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="@{product.title}"
-                tools:text="곰돌이 인형"
+                android:background="@color/gray"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -65,15 +57,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.8" />
-
+                app:layout_constraintGuide_percent="0.5" />
 
             <TextView
                 android:id="@+id/price"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                tools:text="$17.00"
-                android:text="@{@string/doller(product.price)}"
+                android:background="@color/gray"
                 android:textColor="@color/price"
                 android:textSize="@dimen/caption"
                 app:layout_constraintEnd_toStartOf="@id/guidePrice"
@@ -83,23 +73,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-        <ImageView
-            android:id="@+id/lock"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/circle"
-            android:padding="5dp"
-            android:src="@drawable/ic_baseline_lock_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
