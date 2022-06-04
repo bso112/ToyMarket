@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.manta.topmarket.model.Model
 
-fun <T : Model<T>> createDiffUtil(): DiffUtil.ItemCallback<T> {
+fun <T : Model<T>> createDiffUtilCallback(): DiffUtil.ItemCallback<T> {
     return object : DiffUtil.ItemCallback<T>() {
         override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
             return oldItem.areItemsTheSame(newItem)
@@ -22,19 +22,22 @@ fun <T : Model<T>> createDiffUtil(): DiffUtil.ItemCallback<T> {
     }
 }
 
-abstract class AppListAdapter<T : Model<T>, B : ViewDataBinding>(
+open class AppListAdapter<T : Model<T>>(
     private val layoutId: Int,
-) : ListAdapter<T, AppListAdapter.ViewHolder<B>>(createDiffUtil()) {
+) : ListAdapter<T, AppListAdapter.ViewHolder>(createDiffUtilCallback()) {
 
-    class ViewHolder<B : ViewDataBinding>(val binding: B) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<B> {
-        val binding: B =
-            DataBindingUtil.inflate<B>(LayoutInflater.from(parent.context), layoutId, parent, false)
-                .apply {
-                    lifecycleOwner = parent.findViewTreeLifecycleOwner()
-                }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding =
+            DataBindingUtil.inflate<ViewDataBinding>(LayoutInflater.from(parent.context), layoutId, parent, false)
+        binding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return ViewHolder(binding)
     }
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.binding.setVariable(item.bindingVariableId(), item)
+        holder.binding.executePendingBindings()
+    }
 }

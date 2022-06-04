@@ -1,6 +1,6 @@
 package com.manta.topmarket.model
 
-import androidx.recyclerview.widget.DiffUtil
+import com.manta.topmarket.BR
 
 data class Product(
     val id: Int,
@@ -17,6 +17,8 @@ data class Product(
     override fun areContentsTheSame(other: Product): Boolean {
         return this == other
     }
+
+    override fun bindingVariableId(): Int = BR.product
 
 
 }

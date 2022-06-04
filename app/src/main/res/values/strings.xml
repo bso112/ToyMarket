@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TopMarket</string>
+    <string name="doller">$%s</string>
 </resources>

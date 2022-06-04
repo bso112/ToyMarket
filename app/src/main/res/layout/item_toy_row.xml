@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <data>
-
+        <variable
+            name="product"
+            type="com.manta.topmarket.model.Product" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,11 +18,12 @@
         android:background="@color/white"
         android:padding="15dp">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/productImg"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:padding="10dp"
+            app:networkImage="@{product.image}"
             android:background="@drawable/circle"
             android:backgroundTint="@color/product_background"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -35,7 +40,8 @@
             android:layout_marginStart="15dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="토끼 장난감"
+            android:text="@{product.title}"
+            tools:text="토끼 장난감"
             app:layout_constraintBottom_toTopOf="@+id/rating"
             app:layout_constraintEnd_toStartOf="@id/guideProductName"
             app:layout_constraintHorizontal_bias="0.0"
@@ -83,7 +89,8 @@
             style="@style/h3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$36.00"
+            tools:text="$17.00"
+            android:text="@{@string/doller(product.price)}"
             android:textColor="@color/price"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -2,10 +2,14 @@
 
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <data>
-
+        <variable
+            name="product"
+            type="com.manta.topmarket.model.Product" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +28,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/circle"
+                app:networkImage="@{product.image}"
                 android:padding="15dp"
                 android:backgroundTint="@color/product_background"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -38,7 +43,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="곰돌이 인형"
+                android:text="@{product.title}"
+                tools:text="곰돌이 인형"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +64,8 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$17.00"
+                tools:text="$17.00"
+                android:text="@{@string/doller(product.price)}"
                 android:textColor="@color/price"
                 android:textSize="@dimen/caption"
                 app:layout_constraintEnd_toEndOf="parent"

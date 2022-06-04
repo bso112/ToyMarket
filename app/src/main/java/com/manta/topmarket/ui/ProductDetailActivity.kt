@@ -1,7 +1,7 @@
 package com.manta.topmarket.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.manta.topmarket.R
 import com.manta.topmarket.databinding.ActivityProductDetailBinding
