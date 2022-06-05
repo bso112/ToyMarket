@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TopMarket</string>
     <string name="doller">$%s</string>
+    <string name="greeting">%s 👋</string>
 </resources>

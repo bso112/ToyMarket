@@ -11,204 +11,219 @@
             type="com.manta.topmarket.ui.main.MainViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.main.MainActivity">
-
-        <TextView
-            android:id="@+id/greeting"
-            style="@style/h3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello, "
-            app:layout_constraintBottom_toBottomOf="@+id/profile"
-            app:layout_constraintHorizontal_bias="0.04"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/profile" />
-
-        <TextView
-            android:id="@+id/userName"
-            style="@style/h2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/greeting"
-            app:layout_constraintStart_toEndOf="@id/greeting"
-            app:layout_constraintTop_toTopOf="@id/greeting"
-            tools:text="Jonson 👋" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/profile"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_margin="15dp"
-            android:background="@drawable/circle"
-            android:backgroundTint="@color/profile_background"
-            app:civ_border_color="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/searchBar"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile">
+            android:layout_height="wrap_content"
+            tools:context=".ui.main.MainActivity">
 
+            <TextView
+                android:id="@+id/greeting"
+                style="@style/h3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hello, "
+                app:layout_constraintBottom_toBottomOf="@+id/profile"
+                app:layout_constraintHorizontal_bias="0.04"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/profile" />
 
-            <ImageView
-                android:id="@+id/searchBarBackground"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="20dp"
-                android:src="@drawable/rounded_corner_fill" />
+            <TextView
+                android:id="@+id/userName"
+                style="@style/h2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                app:fadeInText="@{@string/greeting(vm.userName.value)}"
+                app:isVisible="@{vm.userName.value != null}"
+                app:layout_constraintBottom_toBottomOf="@id/greeting"
+                app:layout_constraintStart_toEndOf="@id/greeting"
+                app:layout_constraintTop_toTopOf="@id/greeting"
+                tools:text="Jonson 👋" />
 
-            <ImageView
-                android:id="@+id/searchIcon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginEnd="20dp"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/profile"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="15dp"
                 android:background="@drawable/circle"
-                android:padding="5dp"
-                android:src="@drawable/ic_baseline_search_24"
-                app:layout_constraintBottom_toBottomOf="@id/searchBarBackground"
-                app:layout_constraintEnd_toEndOf="@id/searchBarBackground"
-                app:layout_constraintTop_toTopOf="@id/searchBarBackground" />
+                android:backgroundTint="@color/profile_background"
+                app:civ_border_color="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/searchBar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/profile">
+
+
+                <ImageView
+                    android:id="@+id/searchBarBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="20dp"
+                    android:src="@drawable/rounded_corner_fill" />
+
+                <ImageView
+                    android:id="@+id/searchIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/circle"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_baseline_search_24"
+                    app:layout_constraintBottom_toBottomOf="@id/searchBarBackground"
+                    app:layout_constraintEnd_toEndOf="@id/searchBarBackground"
+                    app:layout_constraintTop_toTopOf="@id/searchBarBackground" />
+
+                <EditText
+                    android:id="@+id/searchEditText"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:background="@null"
+                    android:hint="Search your favourite toy"
+                    android:textSize="@dimen/caption"
+                    app:layout_constraintEnd_toStartOf="@id/searchIcon"
+                    app:layout_constraintStart_toStartOf="@id/searchBarBackground" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <TextView
+                android:id="@+id/trendingToysTitle"
+                style="@style/h2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Trending Toys 🔥"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/greeting"
+                app:layout_constraintTop_toBottomOf="@id/searchBar" />
+
+            <TextView
+                android:id="@+id/trendingToysShowAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:text="Show all"
+                app:layout_constraintBottom_toBottomOf="@id/trendingToysTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/trendingToysTitle" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/trendingToys"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:isVisible="@{!vm.productList.loading}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/trendingToysTitle"
+                app:submitList="@{vm.productList.value}"
+                tools:listitem="@layout/item_toy_box" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/trendingToysLoading"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="15dp"
-                android:background="@null"
-                android:hint="Search your favourite toy"
-                android:textSize="@dimen/caption"
-                app:layout_constraintEnd_toStartOf="@id/searchIcon"
-                app:layout_constraintStart_toStartOf="@id/searchBarBackground" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                app:isVisible="@{vm.productList.loading}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/trendingToysTitle"
+                tools:visibility="invisible">
 
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <include layout="@layout/item_toy_box_placeholder" />
+
+                    <include layout="@layout/item_toy_box_placeholder" />
+
+                    <include layout="@layout/item_toy_box_placeholder" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+            <TextView
+                android:id="@+id/forYouTitle"
+                style="@style/h2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="For You"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/trendingToysTitle"
+                app:layout_constraintTop_toBottomOf="@id/trendingToysLoading" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Show all"
+                app:layout_constraintBottom_toBottomOf="@id/forYouTitle"
+                app:layout_constraintEnd_toEndOf="@id/trendingToysShowAll"
+                app:layout_constraintTop_toTopOf="@id/forYouTitle" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recommendToys"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                app:isVisible="@{!vm.productList.loading}"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/forYouTitle"
+                app:submitList="@{vm.productList.value}"
+                tools:listitem="@layout/item_toy_row" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/recommendToysPlaceHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                app:isVisible="@{vm.productList.loading}"
+                app:layout_constraintTop_toBottomOf="@id/forYouTitle"
+                tools:visibility="invisible">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/item_toy_row_placeholder" />
+
+                    <include layout="@layout/item_toy_row_placeholder" />
+
+                    <include layout="@layout/item_toy_row_placeholder" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <TextView
-            android:id="@+id/trendingToysTitle"
-            style="@style/h2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Trending Toys 🔥"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/greeting"
-            app:layout_constraintTop_toBottomOf="@id/searchBar" />
-
-        <TextView
-            android:id="@+id/trendingToysShowAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:text="Show all"
-            app:layout_constraintBottom_toBottomOf="@id/trendingToysTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/trendingToysTitle" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/trendingToys"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal"
-            app:isVisible="@{!vm.productList.loading}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/trendingToysTitle"
-            app:submitList="@{vm.productList.value}"
-            tools:listitem="@layout/item_toy_box" />
-
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/trendingToysLoading"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            app:isVisible="@{vm.productList.loading}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/trendingToysTitle">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <include layout="@layout/item_toy_box_placeholder" />
-
-                <include layout="@layout/item_toy_box_placeholder" />
-
-                <include layout="@layout/item_toy_box_placeholder" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
-
-        <TextView
-            android:id="@+id/forYouTitle"
-            style="@style/h2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="For You"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/trendingToysTitle"
-            app:layout_constraintTop_toBottomOf="@id/trendingToysLoading" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Show all"
-            app:layout_constraintBottom_toBottomOf="@id/forYouTitle"
-            app:layout_constraintEnd_toEndOf="@id/trendingToysShowAll"
-            app:layout_constraintTop_toTopOf="@id/forYouTitle" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recommendToys"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:isVisible="@{!vm.productList.loading}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/forYouTitle"
-            app:submitList="@{vm.productList.value}"
-            tools:listitem="@layout/item_toy_row" />
-
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/recommendToysPlaceHolder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="20dp"
-            app:isVisible="@{vm.productList.loading}"
-            app:layout_constraintTop_toBottomOf="@id/forYouTitle">
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <include layout="@layout/item_toy_row_placeholder" />
-
-                <include layout="@layout/item_toy_row_placeholder" />
-
-                <include layout="@layout/item_toy_row_placeholder" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

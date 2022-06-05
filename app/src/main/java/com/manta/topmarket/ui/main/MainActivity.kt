@@ -1,9 +1,12 @@
 package com.manta.topmarket.ui.main
 
 import android.os.Bundle
+import android.view.KeyEvent
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearSnapHelper
 import com.manta.topmarket.R
 import com.manta.topmarket.databinding.ActivityMainBinding
 import com.manta.topmarket.model.Product
@@ -32,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.trendingToys.adapter = AppListAdapter<Product>(R.layout.item_toy_box)
         binding.recommendToys.adapter = AppListAdapter<Product>(R.layout.item_toy_row)
-
+        LinearSnapHelper().attachToRecyclerView(binding.trendingToys)
 
 
     }

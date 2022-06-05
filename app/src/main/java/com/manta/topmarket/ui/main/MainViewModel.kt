@@ -17,9 +17,16 @@ class MainViewModel @Inject constructor(
     private val _productList = MutableStateFlow<UiState<List<Product>>>(UiState())
     val productList = _productList.asStateFlow()
 
+    private val _userName = MutableStateFlow<UiState<String>>(UiState())
+    val userName = _userName.asStateFlow()
+
     init {
         updateUiState(_productList) {
             mainRepository.fetchProductList()
+        }
+
+        updateUiState(_userName){
+            mainRepository.fetchUserName()
         }
     }
 
