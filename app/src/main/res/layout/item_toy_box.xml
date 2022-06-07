@@ -29,6 +29,7 @@
                 android:layout_height="100dp"
                 android:background="@drawable/circle"
                 app:networkImage="@{product.image}"
+                android:transitionName="@string/shared_element_product_img"
                 android:padding="15dp"
                 android:backgroundTint="@color/product_background"
                 app:layout_constraintBottom_toBottomOf="parent"

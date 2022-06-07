@@ -2,4 +2,5 @@
     <string name="app_name">TopMarket</string>
     <string name="doller">$%s</string>
     <string name="greeting">%s 👋</string>
+    <string name="shared_element_product_img">com.manta.TopMarket.shared_element_product_img</string>
 </resources>

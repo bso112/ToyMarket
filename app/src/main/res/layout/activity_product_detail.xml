@@ -6,12 +6,15 @@
 
     <data>
 
+        <variable
+            name="product"
+            type="com.manta.topmarket.model.Product" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.ProductDetailActivity">
+        tools:context=".ui.detail.ProductDetailActivity">
 
         <include
             android:id="@+id/toolbar"
@@ -20,159 +23,180 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:paddingHorizontal="20dp"
-            android:paddingBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginVertical="20dp"
-                android:background="@drawable/circle"
-                android:backgroundTint="@color/product_background"
-                app:layout_constraintBottom_toBottomOf="@id/productImgGuide"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/productImgGuide"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.5" />
-
-            <TextView
-                android:id="@+id/productName"
-                style="@style/h1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="곰돌이 인형"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/productImgGuide" />
-
-            <TextView
-                android:id="@+id/authorName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="By Alarmy Store"
-                app:layout_constraintStart_toStartOf="@id/productName"
-                app:layout_constraintTop_toBottomOf="@id/productName" />
-
-            <TextView
-                style="@style/h3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="$26.00"
-                android:textColor="@color/price"
-                app:layout_constraintBottom_toBottomOf="@id/authorName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/productName" />
-
-
-            <TextView
-                android:id="@+id/description_title"
-                style="@style/h3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Description"
-                app:layout_constraintStart_toStartOf="@id/authorName"
-                app:layout_constraintTop_toBottomOf="@+id/authorName" />
-
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                app:layout_constraintStart_toStartOf="@id/description_title"
-                app:layout_constraintTop_toBottomOf="@id/description_title" />
-
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/btnGuidLine"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.37" />
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/stepper"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:background="@drawable/rounded_corner_fill"
-                android:backgroundTint="@color/stepper"
-                app:layout_constraintBottom_toBottomOf="@id/btnBuy"
-                app:layout_constraintTop_toTopOf="@id/btnBuy"
-                app:layout_constraintEnd_toStartOf="@id/btnGuidLine"
-                app:layout_constraintStart_toStartOf="parent">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
+                android:paddingBottom="30dp">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/stepper_plus"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_baseline_add_circle_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/quantity"
+                <ImageView
+                    android:id="@+id/productImg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginVertical="20dp"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="@color/product_background"
+                    android:padding="50dp"
+                    app:layout_constraintBottom_toBottomOf="@id/productImgGuide"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginStart="10dp"
-                    app:tint="@color/price" />
+                    app:networkImage="@{product.image}" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/productNameGuide"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.8" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/productImgGuide"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.5" />
 
                 <TextView
-                    android:id="@+id/quantity"
+                    android:id="@+id/productName"
+                    style="@style/h1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{product.title}"
+                    app:layout_constraintEnd_toEndOf="@+id/productNameGuide"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/productImgGuide"
+                    tools:text="곰돌이 인형" />
+
+                <TextView
+                    android:id="@+id/authorName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/stepper_plus"
-                    app:layout_constraintEnd_toStartOf="@id/stepper_minus"
-                    style="@style/h1"
-                    android:text="1"/>
+                    android:text="By Alarmy Store"
+                    app:layout_constraintStart_toStartOf="@id/productName"
+                    app:layout_constraintTop_toBottomOf="@id/productName" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/stepper_minus"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/ic_baseline_remove_circle_outline_24"
-                    app:layout_constraintStart_toEndOf="@id/quantity"
+                <TextView
+                    style="@style/h3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/doller(product.price)}"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/price"
+                    app:isVisible="@{product.price != null}"
+                    app:layout_constraintBottom_toBottomOf="@id/authorName"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginEnd="10dp"
-                    app:tint="@color/price" />
+                    app:layout_constraintStart_toStartOf="@+id/productNameGuide"
+                    app:layout_constraintTop_toTopOf="@+id/productName"
+                    tools:text="$4.00" />
+
+
+                <TextView
+                    android:id="@+id/description_title"
+                    style="@style/h3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:text="Description"
+                    app:layout_constraintStart_toStartOf="@id/authorName"
+                    app:layout_constraintTop_toBottomOf="@+id/authorName" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@{product.description}"
+                    app:layout_constraintStart_toStartOf="@id/description_title"
+                    app:layout_constraintTop_toBottomOf="@id/description_title"
+                    tools:text="description" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
+        </ScrollView>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/stepper"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/rounded_corner_fill"
+            android:backgroundTint="@color/stepper"
+            app:layout_constraintBottom_toBottomOf="@id/btnBuy"
+            app:layout_constraintEnd_toStartOf="@id/btnBuy"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btnBuy">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/stepper_plus"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_baseline_add_circle_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/quantity"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/price" />
+
+            <TextView
+                android:id="@+id/quantity"
                 style="@style/h1"
-                android:id="@+id/btnBuy"
-                android:layout_marginStart="30dp"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:background="@drawable/rounded_corner_fill"
-                android:backgroundTint="@color/black"
-                android:text="Buy Now"
-                android:textColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/stepper_minus"
+                app:layout_constraintStart_toEndOf="@id/stepper_plus"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/stepper_minus"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_baseline_remove_circle_outline_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/btnGuidLine"
-                app:layout_constraintTop_toBottomOf="@id/description"
-                app:layout_constraintVertical_bias="1.0">
+                app:layout_constraintStart_toEndOf="@id/quantity"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/price" />
 
-
-            </androidx.appcompat.widget.AppCompatButton>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBuy"
+            style="@style/h1"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_corner_fill"
+            android:backgroundTint="@color/black"
+            android:text="Buy Now"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/stepper"
+            app:layout_constraintVertical_bias="1.0">
+
+
+        </androidx.appcompat.widget.AppCompatButton>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
