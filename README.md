@@ -1,5 +1,5 @@
 
-> This app is made for demoing **Meterial Motion**
+> This app is made for demoing **Material Motion**
 <br/>
 
 ![Alt Text](toymarket_demo_AdobeExpress.gif)
@@ -11,7 +11,7 @@
 - Run Meterial Motion When click product item
 
 ## Tech Stack
-- Meterial Motion
+- Material Motion
 - Hilt
 - retrofit
 - glide
