@@ -1,7 +1,9 @@
 
-This app made for demoing **Meterial Motion**
+> This app is made for demoing **Meterial Motion**
+<br/>
 
 ![Alt Text](toymarket_demo_AdobeExpress.gif)
+
 
 ## Feature
 - Fetch fake product list via (Fake Shop API)[https://fakestoreapi.com/]
